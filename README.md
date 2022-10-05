@@ -20,12 +20,12 @@ The data used for this analysis is from the following sources:
 Target variables for analysis include the following:
 
 - Performance metrics
- - Production budget and worldwide income (TN): Used to calculate a worldwide return on investment to understand the efficiency and profitability of the movie investment
- - Average rating (IMBD): Used to understand the movie populatiry and how well the movie was received by viewers
+    - Production budget and worldwide income (TN): Used to calculate a worldwide return on investment to understand the efficiency and profitability of the movie investment
+     - Average rating (IMBD): Used to understand the movie popularity and how well the movie was received by viewers
 - Movie attributes (IMBD)
- - Runtime
- - Release date
- - Genre
+     - Runtime
+     - Release date
+     - Genre
  
 It is unclear whether the datasets provided represent a certain movie populations. This would be worth further investigation in the future should any differences in population sample skew results.
 
