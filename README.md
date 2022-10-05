@@ -1,77 +1,79 @@
-# Phase 1 Project Template - Minimum Viable Product (MVP) - update
+# Movie Analysis: Movie Development/Rollout Strategy
 
-![blueprint](images/blueprint.png)
+**Author**: Patrick Parkinson
+
+## Overview
+
+This project analyzes movie attribute and performance metric data found from [IMBD](https://www.imdb.com/) and [The Numbers](https://www.the-numbers.com/) to help Microsoft's new Movie Studio better determine what movie types and rollout strategies will be most effective. The data analysis shows that movie profitability and ratings vary by runtime, release date, and genre. Microsoft can use this information to rollout the most cost efficient and popular film offering.
+
+## Business Problem
+
+As a leading technology company, Microsoft is looking to expand their product offering to include original movie content. The Microsoft Movie Studio will compete directly with leading video content providers such as Netflix, HBO, and Hulu providing additional revenue streams while expanding their customer base for direct marketing of separate products and services. Microsoft is looking to complete an initial investigation into the performance of films in the movie industry to better understand the types of movies and launch strategies that are most effective. As a new film producer it will be critical for Microsoft to efficiently invest in their initial films while developing content that users enjoy. For this reason Return on investment (ROI) and viewer ratings have been analyzed against film attributes such as genre, runtime, and release date to guide Microsoft's initial film strategy.    
+
+## Data
+
+The data used for this analysis is from the following sources:
+
+- [IMBD](https://www.imdb.com/): Leading online database for films including various movie attributes and viewer reviews. Data for this analysis is located within a SQLite database
+- [The Numbers](https://www.the-numbers.com/): Data website that tracks box office revenue by film. Data for this analysis is located in a .csv file
+
+Target variables for analysis include the following:
+
+- Performance metrics
+ - Production budget and worldwide income (TN): Used to calculate a worldwide return on investment to understand the efficiency and profitability of the movie investment
+ - Average rating (IMBD): Used to understand the movie populatiry and how well the movie was received by viewers
+- Movie attributes (IMBD)
+ - Runtime
+ - Release date
+ - Genre
+ 
+It is unclear whether the datasets provided represent a certain movie populations. This would be worth further investigation in the future should any differences in population sample skew results.
+
+## Methods
+
+This project uses descriptive analysis to compare the movie attributes and performance metrics of interest. Desired variables were first merged together in a single dataframe followed by data cleaning and feature engineering to produce additional variables of interest. Exploratory data analysis was then used to calculate descriptive statistics and address outliers. Finally, various visualizations were used to better understand the data and formulate recommendations. 
 
 
-This repository is like a blueprint, providing structure for your first End of Phase Project. We suggest you base your Phase 1 project off of this repository so you can focus less on formatting and organization, and more on the _analysis and communication skills_ that will support your progress through the course. This template is designed to make your project portfolio-ready in order to impress the future employers who will review it. 
+## Results
 
-![graph1](./images/viz1.png)
+Without the top 5% producers by ROI, movies released in January, June, and  November produced the highest average ROI. 
+![graph1](./images/ROI_by_month.png)
 
-## Repository Contents
+Excluding the top 5% ROI producers, there is a steady increase in average ROI in runtimes from 90 - 150min, stabalizing through 170min. Average rating also steadily increases over this range. 
+![graph2](./images/ROI_by_runtime.png)
+![graph3](./images/rating_by_runtime.png)
 
-![graph2](./images/runtime_distribution.png)
+There is a vast difference in ROIs for different movie genres. Sports, animation, family, and romance movies all have average ROIs greater than 350% and ratings greater than 6.
+![graph4](./images/genres_by_rating_and_ROI.png)
 
-Below is a list of the contents of this repository - instructions for using them are in the next section.
 
-- `README.md`: The README for this repo branch explaining it's contents - you're reading it now
-- `TEMPLATE_README.md`: An example of a project README that provides a brief overview of your whole project
-- `dsc-phase1-project-template.ipynb`: A starter Jupyter Notebook with headings, code examples and guiding questions
-- `DS_Project_Presentation_Template.pdf`: A starter slide deck presenting your project - here is an [editable version](https://docs.google.com/presentation/d/1PaiH1bleXnhiPjTPsAXQSiAK0nkaRlseQIr_Yb-0mz0/copy)
-- `zippedData` folder: A folder for the data you reference with your code
-- `images` folder: A folder for the images you reference in your files 
-- `.gitignore`: A hidden file that tells git to not track certain files and folders
+## Conclusions
 
-## Instructions For Using This Repository
+This analysis leads to three recommendations for movie development under the new Microsoft Movie Studio:
+- **Release movies throughout the year to remain competitive but favor release dates around January, June, and November**. While hits can occur any time throughout the year, these months yielded the highest average ROI for the bulk of the movies reviewed. These months also correlate to times where the total number of movies released are lower (see release date EDA) which will allow for lower competition at the box office. 
+- **Focus on movies with runtimes from 110 - 170min**. Movies with these runtimes have the highest ROI on average for the bulk of the movies analyzed. These runtimes also have high ratings. While movies with higher runtimes had even higher ratings there is not enough data available to make the determinations for movies in the highest runtime range. 
+- **While a wide variety of genre's are recommended to compete with other movie content producers and appeal to wide audience, focus initial efforts on the following genres: sports, animation, family, romance**. These movies yielded both the highest ROI (greater than 350%) and the highest user ratings (greater than 6). 
 
-### Fork This Repository
+The below notes have been included for consideration:
+- Note that while the averages analyzed in this activity do show differences in ratings and ROI by movie attributes, there is no statistical correlation between these variables and movies produced according to these recommendations are not intended to predict results. There are several other variables that influence movie success but the relative differences in historical averages in this report are helpful in guiding movie selections. 
+- Analysis assumes that the production_budget from the TN dataset is representative of total development costs for a given movie. It would be helpful to confirm this to ensure ROI calculations are accurate. 
+- In future, it would be helpful to have a better understanding of the source of the raw data sets provided. It was not clear whether the IMBD or TN datasets only represented a certain population of movies which may skew the results and recommendations.
+- The genre analysis compares genres against vastly different data sizes. In the future it would be helpful to have larger and more consistent sample sizes for each genre.
+- In future, additional movie parameters should be examined to help guide development strategy such as producers, writers, and actors.
+- In future, it would also be helpful to further define performance metrics to better understand where movie revenue is coming from (box office, merchandise, online streaming, etc.) so Microsoft can better plan it's commercialization strategy.
 
-**For a group project**, have only one team member do these steps:
+## For More Information
 
-1. Fork this repository to your personal account
-   - In GitHub, go to this repository and click the "Fork" button in the upper right
-   
-2. Change the name of your fork of this repo to a _descriptive_ name of your choosing
-   - In GitHub, go to your fork of this repo -> "Settings" -> "Options" -> "Repository Name" -> "Rename"
-   - Make the name descriptive, since potential employers will read it. Ex: "Microsoft-Movie-Analysis" is better than "Project-1"
+Please review our full analysis in [our Jupyter Notebook](./Project_Notebook.ipynb) or our [presentation](./DS_Project_Presentation.pdf).
 
-3. Use `git clone` to clone your fork of this repo to your local computer
+For any additional questions, please contact **Patrick Parkinson**
 
-4. **For a group project**, add team members as collaborators to your fork of this repo
-   - In GitHub, go to your fork of this repo -> "Settings" -> "Manage Access" -> "Invite Teams or People"
-   - Add your project team members as collaborators & send them the repo GitHub URL
+## Repository Structure
 
-### Work In Your Fork Of This Repository
 
-- Work in the repo clone that you created on your local machine
-- Start writing and coding in the Jupyter Notebook `dsc-phase1-project-template.ipynb`
-- Fill in the README template in `TEMPLATE_README.md`
-- Use `git add`, `git commit`, and `git push` often to update your repo in GitHub
-   - For a refresher on how to do this and why it's important, review Topic 2: Bash and Git
-
-### Use The Slide Template
-
-1. Go to [this link](https://docs.google.com/presentation/d/1PaiH1bleXnhiPjTPsAXQSiAK0nkaRlseQIr_Yb-0mz0/copy) to make an editable copy of the slide deck in your own Google Drive account
-2. Go to "Slide," select "Change Theme," and pick a theme you like so your presentation doesn't look like everyone else's
-3. **For a group project**, click the "Share" button and add your teammates as editors
-
-### Tidy Up Your Project
-
-- Change the file name of the Jupyter Notebook (`dsc-phase1-project-template.ipynb`) to something more descriptive
-- Save an appropriately-named PDF version of your slide deck to the repository
-- Rename the template readme you've been working in by running `git mv TEMPLATE_README.md README.md`
-- Delete unnecessary files from the repo using `git rm`
-   - The presentation PDF: `DS_Project_Presentation_Template.pdf`
-   - Any unused data files in the `zippedData` folder
-   - Any unused images in the `images` folder
-- Utilize the .gitignore file to ignore large unzipped data files in the `zippedData` folder
-   - Add `*.csv`,`*.tsv`, and `*.db` to the .gitignore file
-
-### Submit Your Project
-
-To submit your project, please follow the instructions in the "Project Submission & Review" page in the Milestones course.
-
-***
-### Notes
-
-- The visualizations in the notebook use best practices for visualization that you should try to emulate. For example, they have clear axes, descriptive titles, and appropriate number formatting
-- The `dsc-phase1-project-template.ipynb` is intended to be the _final version_ of your project. The first notebook you create will not look like this. You are encouraged to start with a very disorderly notebook and clean it as you go
+```
+├── README.md                      <- The top-level README for reviewers of this project
+├── Project Notebook.ipynb         <- Narrative documentation of analysis in Jupyter notebook
+├── DS_Project_Presentation.pdf    <- PDF version of project presentation
+├── data                           <- Sourced externally
+└── images                         <- Produced by code
